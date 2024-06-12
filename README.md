@@ -347,27 +347,3 @@ network <- HDGC_VAR_all(data[, c(dependent_variable, independent_variables)], p 
 Plot_GC_all(network, Stat_type = "FS_cor", alpha = 0.01, multip_corr = list(TRUE, method = "BH"), directed = TRUE, layout = layout.circle, main = "Network", edge.arrow.size = .2, vertex.size = 5, vertex.color = c("lightblue"), vertex.frame.color = "blue", vertex.label.size = 2, vertex.label.color = "black", vertex.label.cex = 0.6, vertex.label.dist = 1, edge.curved = 0, cluster = list(TRUE, 5, "black", 0.8, 1, 0))
 ```
 
-### Additional Implementation for HVAR and Realized Correlations
-
-```r
-# If working with realized volatilities
-# Log-transform the series
-log_data <- log(data[, c(dependent_variable, independent_variables)])
-
-# Prepare the list of interest variables
-interest_variables <- lapply(independent_variables, function(var) {
-  list(GCto = dependent_variable, GCfrom = var)
-})
-
-# Test for Granger causality among realized volatilities
-results <- lapply(interest_variables, function(pair) {
-  HDGC_HVAR(GCpair = pair, data = log_data[, c(dependent_variable, pair$GCfrom)], p = 3, bound = 0.5 * nrow(data), parallel = TRUE, n_cores = 4)
-})
-
-# Print results
-print(results)
-
-# Optional: Condition on realized correlations and plot the estimated network
-network <- HDGC_HVAR_RV_RCoV_all(realized_variances = log_data, realized_covariances = cov(log_data), fisher_transf = TRUE, log = TRUE, bound = 0.5 * nrow(data), parallel = TRUE, n_cores = 4)
-Plot_GC_all(network, Stat_type = "FS_cor", alpha = 0.01, multip_corr = list(TRUE, method = "BH"), directed = TRUE, layout = layout.circle, main = "Network", edge.arrow.size = .2, vertex.size = 5, vertex.color = c("lightblue"), vertex.frame.color = "blue", vertex.label.size = 2, vertex.label.color = "black", vertex.label.cex = 0.6, vertex.label.dist = 1, edge.curved = 0, cluster = list(TRUE, 5, "black", 0.8, 1, 0))
-```
