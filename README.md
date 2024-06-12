@@ -1,5 +1,4 @@
-For visualisation purpose of the data lets draw the time series plot of the data
-
+For visualization purpose of the data, I have tried to plot each of the time series data, I could infer that the is a non stationary time series data
 
 
 ## Plot Original Data
@@ -132,5 +131,45 @@ The plots above clearly visualize the time series data, both in their original a
 ![Separated Normalized Data Plot 3](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot03.png)
 
 
+
+
+
+
+
+```r
+# Load necessary libraries
+library(HDGCvar)
+library(igraph)
+
+# Load your data (assuming your data is saved as 'time_series_data.csv')
+data <- read.csv("C:/Users/muham/Desktop/Time series data.csv")
+
+# Set the dependent variable and the dataset
+dependent_variable <- 'PE_index'
+independent_variables <- c('VC_index', 'Bond10', 'SP500', 'GSCI', 'HFRI', 'NFCI', 'PMI', 'PE_r', 'VC_r', 'Bond10_r', 'SP500_r', 'GSCI_r', 'HFRI_r', 'NFCI_r', 'PMI_r')
+
+# Select the lag length
+selected_lag <- lags_upbound_BIC(data[, c(dependent_variable, independent_variables)], p_max = 10)
+print(selected_lag)
+
+# Prepare the list of interest variables
+interest_variables <- lapply(independent_variables, function(var) {
+  list(GCto = dependent_variable, GCfrom = var)
+})
+
+# Test for Granger causality for each variable
+results <- lapply(interest_variables, function(pair) {
+  HDGC_VAR(GCpair = pair, data = data[, c(dependent_variable, pair$GCfrom)], p = selected_lag, d = 2, bound = 0.5 * nrow(data), parallel = TRUE)
+})
+
+# Print results
+print(results)
+
+# Optional: Estimate the full network of causality and plot the estimated network
+network <- HDGC_VAR_all(data[, c(dependent_variable, independent_variables)], p = selected_lag, d = 2, bound = 0.5 * nrow(data), parallel = TRUE)
+Plot_GC_all(network, Stat_type = "FS_cor", alpha = 0.01, multip_corr = list(FALSE), directed = TRUE, layout = layout.circle, main = "Network", edge.arrow.size = .2, vertex.size = 5, vertex.color = c("lightblue"), vertex.frame.color = "blue", vertex.label.size = 2, vertex.label.color = "black", vertex.label.cex = 0.6, vertex.label.dist = 1, edge.curved = 0, cluster = list(TRUE, 5, "black", 0.8, 1, 0))
+
+
+```
 
 
