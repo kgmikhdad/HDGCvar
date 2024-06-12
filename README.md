@@ -173,3 +173,6 @@ Plot_GC_all(network, Stat_type = "FS_cor", alpha = 0.01, multip_corr = list(FALS
 ```
 
 
+
+"We can alter the significance level from 1% to a different level. We can manually choose the lag. I am attaching plots of different networks that I have generated based on the following changes, such as different values of alpha and different p values."
+
