@@ -46,7 +46,7 @@ data <- read.csv("C:/Users/muham/Desktop/Time series data.csv")
 # Extract the year column for the x-axis
 years <- data$year
 
-# Remove the date, year, and quarter columns for simplicity
+# Remove the date, year, and quarter columns
 data <- data[ , !names(data) %in% c("date", "year", "quarter")]
 
 # Normalize the data to make it more comparable
@@ -461,7 +461,10 @@ The Granger causality tests conducted on the dataset involving the dependent var
 
 
 "We can alter the significance level from 1% to a different level. We can manually choose the lag. I am attaching plots of different networks that I have generated based on the following changes, such as different alpha and p values."
+---
 
+Other Examples
+---
 ![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot04.png)
 ![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot05.png)
 ![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot06.png)
@@ -717,7 +720,7 @@ Plot_GC_all(network_multiple, Stat_type = "FS_cor", alpha = 0.01, multip_corr = 
 
 ```
 
-
+Result
 
 
 ```r
