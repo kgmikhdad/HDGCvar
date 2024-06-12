@@ -555,3 +555,85 @@ Plot_GC_all(network, Stat_type = "FS_cor", alpha = 0.01, multip_corr = list(TRUE
 ```
 ![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot14.png)
 ![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot15.png)
+
+
+
+
+
+---
+All Bivariate case
+---
+
+```r
+# Load necessary libraries
+library(HDGCvar)
+library(igraph)
+
+# Load your data (assuming your data is saved as 'time_series_data.csv')
+data <- read.csv("C:/Users/muham/Desktop/Time series data.csv")
+
+# Set the dependent variable and the dataset
+dependent_variable <- 'PE_index'
+independent_variables <- c('VC_index', 'Bond10', 'SP500', 'GSCI', 'HFRI', 'NFCI', 'PMI', 'PE_r', 'VC_r', 'Bond10_r', 'SP500_r', 'GSCI_r', 'HFRI_r', 'NFCI_r', 'PMI_r')
+
+# Prepare the dataset
+all_variables <- c(dependent_variable, independent_variables)
+data_subset <- data[, all_variables]
+
+# Select the lag length
+selected_lag <- lags_upbound_BIC(data_subset, p_max = 10)
+print(selected_lag)
+
+# Test for Granger causality for all bivariate combinations
+network_bivariate <- HDGC_VAR_all(data = data_subset, p = selected_lag, d = 2, bound = 0.5 * nrow(data_subset), parallel = TRUE, n_cores = 4)
+
+# Plot the estimated network for all bivariate combinations
+Plot_GC_all(network_bivariate, Stat_type = "FS_cor", alpha = 0.01, multip_corr = list(FALSE), directed = TRUE, layout = layout.circle, main = "Bivariate Network", edge.arrow.size = .2, vertex.size = 5, vertex.color = c("lightblue"), vertex.frame.color = "blue", vertex.label.size = 2, vertex.label.color = "black", vertex.label.cex = 0.6, vertex.label.dist = 1, edge.curved = 0, cluster = list(TRUE, 5, "black", 0.8, 1, 0))
+
+
+```
+
+
+---
+Multiple combination case
+---
+
+```r
+# Load necessary libraries
+library(HDGCvar)
+library(igraph)
+
+# Load your data (assuming your data is saved as 'time_series_data.csv')
+data <- read.csv("C:/Users/muham/Desktop/Time series data.csv")
+
+# Set the dependent variable and the dataset
+dependent_variable <- 'PE_index'
+independent_variables <- c('VC_index', 'Bond10', 'SP500', 'GSCI', 'HFRI', 'NFCI', 'PMI', 'PE_r', 'VC_r', 'Bond10_r', 'SP500_r', 'GSCI_r', 'HFRI_r', 'NFCI_r', 'PMI_r')
+
+# Prepare the dataset
+all_variables <- c(dependent_variable, independent_variables)
+data_subset <- data[, all_variables]
+
+# Select the lag length
+selected_lag <- lags_upbound_BIC(data_subset, p_max = 10)
+print(selected_lag)
+
+# Prepare the list of variable pairs for multiple combinations
+variable_pairs <- lapply(independent_variables, function(var) {
+  list(GCto = dependent_variable, GCfrom = var)
+})
+
+# Test for Granger causality for multiple combinations
+results_multiple <- HDGC_VAR_multiple(GCpairs = variable_pairs, data = data_subset, p = selected_lag, d = 2, bound = 0.5 * nrow(data_subset), parallel = TRUE, n_cores = 4)
+
+# Print results
+print(results_multiple)
+
+# Optional: Plot the estimated network for multiple combinations
+network_multiple <- HDGC_VAR_all(data = data_subset, p = selected_lag, d = 2, bound = 0.5 * nrow(data_subset), parallel = TRUE, n_cores = 4)
+Plot_GC_all(network_multiple, Stat_type = "FS_cor", alpha = 0.01, multip_corr = list(FALSE), directed = TRUE, layout = layout.circle, main = "Multiple Combinations Network", edge.arrow.size = .2, vertex.size = 5, vertex.color = c("lightblue"), vertex.frame.color = "blue", vertex.label.size = 2, vertex.label.color = "black", vertex.label.cex = 0.6, vertex.label.dist = 1, edge.curved = 0, cluster = list(TRUE, 5, "black", 0.8, 1, 0))
+
+
+
+```
+
