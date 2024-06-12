@@ -185,4 +185,4 @@ Plot_GC_all(network, Stat_type = "FS_cor", alpha = 0.01, multip_corr = list(FALS
 ![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot10.png)
 ![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot11.png)
 ![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot12.png)
-
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot13.png)
