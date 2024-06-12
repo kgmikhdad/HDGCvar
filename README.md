@@ -186,3 +186,129 @@ Plot_GC_all(network, Stat_type = "FS_cor", alpha = 0.01, multip_corr = list(FALS
 ![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot11.png)
 ![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot12.png)
 ![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot13.png)
+
+
+
+### Technical Writeup: Enhancing Granger Causality Analysis Using HDGCvar
+
+This technical writeup explores the potential modifications to the Granger causality analysis code using the HDGCvar package. It discusses the implications of altering various parameters, such as lag length (p), augmentation parameter (d), bound, and alpha value, and provides insights into how these changes can impact the model's performance and interpretation of results.
+
+#### Code Overview
+
+The initial code performs Granger causality tests using the HDGCvar package on a set of financial time series data. The primary steps include loading data, selecting lag length, preparing interest variables, testing for Granger causality, and plotting the causality network.
+
+#### Original Code
+
+```r
+# Load necessary libraries
+library(HDGCvar)
+library(igraph)
+
+# Load your data (assuming your data is saved as 'time_series_data.csv')
+data <- read.csv("C:/Users/muham/Desktop/Time series data.csv")
+
+# Set the dependent variable and the dataset
+dependent_variable <- 'PE_index'
+independent_variables <- c('VC_index', 'Bond10', 'SP500', 'GSCI', 'HFRI', 'NFCI', 'PMI', 'PE_r', 'VC_r', 'Bond10_r', 'SP500_r', 'GSCI_r', 'HFRI_r', 'NFCI_r', 'PMI_r')
+
+# Select the lag length
+selected_lag <- lags_upbound_BIC(data[, c(dependent_variable, independent_variables)], p_max = 10)
+print(selected_lag)
+
+# Prepare the list of interest variables
+interest_variables <- lapply(independent_variables, function(var) {
+  list(GCto = dependent_variable, GCfrom = var)
+})
+
+# Test for Granger causality for each variable
+results <- lapply(interest_variables, function(pair) {
+  HDGC_VAR(GCpair = pair, data = data[, c(dependent_variable, pair$GCfrom)], p = selected_lag, d = 2, bound = 0.5 * nrow(data), parallel = TRUE)
+})
+
+# Print results
+print(results)
+
+# Optional: Estimate the full network of causality and plot the estimated network
+network <- HDGC_VAR_all(data[, c(dependent_variable, independent_variables)], p = selected_lag, d = 2, bound = 0.5 * nrow(data), parallel = TRUE)
+Plot_GC_all(network, Stat_type = "FS_cor", alpha = 0.01, multip_corr = list(FALSE), directed = TRUE, layout = layout.circle, main = "Network", edge.arrow.size = .2, vertex.size = 5, vertex.color = c("lightblue"), vertex.frame.color = "blue", vertex.label.size = 2, vertex.label.color = "black", vertex.label.cex = 0.6, vertex.label.dist = 1, edge.curved = 0, cluster = list(TRUE, 5, "black", 0.8, 1, 0))
+```
+
+### Potential Modifications and Their Implications
+
+#### 1. Changing the Lag Length (p)
+
+**Description:** The lag length (p) determines how many past values of the variables are included in the model. The `lags_upbound_BIC` function is used to select an optimal lag length based on the Bayesian Information Criterion (BIC).
+
+**Implications:**
+- **Increasing p:** Including more lags can capture more historical dependencies, potentially improving model accuracy but increasing complexity and computational cost. This may help in better modeling the dynamics but could lead to overfitting, especially with limited data.
+- **Decreasing p:** Reducing the number of lags simplifies the model and decreases computational burden, but it may miss important historical dependencies, leading to poorer model performance.
+
+**Example Adjustment:**
+```r
+selected_lag <- 5  # Manually setting p to 5
+```
+
+#### 2. Changing the Augmentation Parameter (d)
+
+**Description:** The parameter d accounts for the potential non-stationarity in the data. It is the maximum order of integration suspected in the time series.
+
+**Implications:**
+- **Increasing d:** Handling higher levels of integration (e.g., I(2) processes) reduces the risk of spurious regression but increases the model complexity and computational load. This is useful if there are strong indications of higher-order integration.
+- **Decreasing d:** Assumes lower levels of integration (e.g., I(1) processes), simplifying the model but risking inaccurate results if higher-order integration is present.
+
+**Example Adjustment:**
+```r
+results <- lapply(interest_variables, function(pair) {
+  HDGC_VAR(GCpair = pair, data = data[, c(dependent_variable, pair$GCfrom)], p = selected_lag, d = 1, bound = 0.5 * nrow(data), parallel = TRUE)
+})
+```
+
+#### 3. Changing the Bound Parameter
+
+**Description:** The `bound` parameter controls the lower bound on the penalty parameter of the lasso, affecting the number of variables selected.
+
+**Implications:**
+- **Increasing bound (> 0.5 * nrow(data)):** Makes the lasso more restrictive, selecting fewer variables. This reduces overfitting but may miss important predictors, increasing type II error.
+- **Decreasing bound (< 0.5 * nrow(data)):** Makes the lasso less restrictive, selecting more variables. This can capture more potential relationships but increases the risk of overfitting and type I error.
+
+**Example Adjustment:**
+```r
+results <- lapply(interest_variables, function(pair) {
+  HDGC_VAR(GCpair = pair, data = data[, c(dependent_variable, pair$GCfrom)], p = selected_lag, d = 2, bound = 0.3 * nrow(data), parallel = TRUE)
+})
+```
+
+#### 4. Changing the Alpha Value
+
+**Description:** The `alpha` parameter in the `Plot_GC_all` function sets the significance level for the Granger causality tests.
+
+**Implications:**
+- **Increasing alpha (> 0.01):** Allows for a higher type I error rate, which means more false positives. This is more lenient and can detect more causal relationships but increases the risk of detecting spurious causality.
+- **Decreasing alpha (< 0.01):** Stricter significance level reduces type I error, leading to fewer false positives but may increase type II error, potentially missing true causal relationships.
+
+**Example Adjustment:**
+```r
+Plot_GC_all(network, Stat_type = "FS_cor", alpha = 0.05, multip_corr = list(FALSE), directed = TRUE, layout = layout.circle, main = "Network", edge.arrow.size = .2, vertex.size = 5, vertex.color = c("lightblue"), vertex.frame.color = "blue", vertex.label.size = 2, vertex.label.color = "black", vertex.label.cex = 0.6, vertex.label.dist = 1, edge.curved = 0, cluster = list(TRUE, 5, "black", 0.8, 1, 0))
+```
+
+### Interpretation of Changes
+
+#### Lag Length (p)
+- **Higher p:** Captures more historical data, potentially improving model performance if the additional lags contain valuable information. However, it increases model complexity, risk of overfitting, and computational cost.
+- **Lower p:** Simplifies the model, reducing computational cost and overfitting risk, but may fail to capture important temporal dependencies, leading to poorer performance.
+
+#### Augmentation Parameter (d)
+- **Higher d:** Ensures robustness against higher-order integration and avoids spurious regression. This is important if the data is suspected to be non-stationary at higher levels but comes at the cost of increased complexity.
+- **Lower d:** Assumes simpler dynamics (e.g., I(0) or I(1)), reducing model complexity. This is suitable if there is confidence that the series are stationary or first-order integrated but risks inaccurate results if higher-order integration is present.
+
+#### Bound Parameter
+- **Higher bound:** Reduces overfitting by selecting fewer variables. This is beneficial for high-dimensional data but may exclude relevant predictors, increasing type II error.
+- **Lower bound:** Includes more variables, capturing a wider range of potential causal relationships. This is useful if there are many relevant predictors but increases the risk of overfitting and type I error.
+
+#### Alpha Value
+- **Higher alpha:** More lenient, allowing more causal relationships to be detected. This can be useful in exploratory analyses but increases the risk of false positives (type I error).
+- **Lower alpha:** Stricter, reducing the likelihood of false positives. This is important for confirmatory analyses but may miss true causal relationships (type II error).
+
+### Conclusion
+
+Optimizing the Granger causality analysis involves balancing model complexity, computational efficiency, and statistical robustness. By adjusting parameters such as lag length, augmentation, bound, and alpha, you can tailor the model to better fit the characteristics of your data and research objectives. It is essential to experiment with these parameters and validate the model's performance through robust statistical testing and domain-specific knowledge.
