@@ -592,7 +592,8 @@ Plot_GC_all(network_bivariate, Stat_type = "FS_cor", alpha = 0.01, multip_corr =
 
 
 ```
-
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot16.png)
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot17.png)
 
 ---
 Multiple combination case
@@ -636,4 +637,5 @@ Plot_GC_all(network_multiple, Stat_type = "FS_cor", alpha = 0.01, multip_corr = 
 
 
 ```
-
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot18.png)
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot19.png)
