@@ -1,10 +1,6 @@
 For visualisation purpose of the data lets draw the time series plot of the data
-```markdown
-# Time Series Data Analysis
 
-This repository contains the analysis of time series data, including plotting the original data, normalizing the data, and creating separate plots for better visualization.
 
-## Load Necessary Libraries
 
 ```r
 # Load necessary libraries
@@ -87,7 +83,7 @@ legend("topright", legend = colnames(rest3), col = 1:ncol(rest3), lty = 1, cex =
 
 ## Conclusion
 
-The plots above provide a clear visualization of the time series data, both in their original and normalized forms. Each variable is also displayed in separate graphs to avoid scaling issues and improve readability.
+The plots above clearly visualize the time series data, both in their original and normalized forms. Each variable is also displayed in separate graphs to avoid scaling issues and improve readability.
 
 ## Example Plots
 
@@ -103,14 +99,6 @@ The plots above provide a clear visualization of the time series data, both in t
 
 ![Separated Normalized Data Plot 3](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot03.png)
 
-Replace `path_to_original_plot.png`, `path_to_normalized_plot.png`, `path_to_separated_plot1.png`, `path_to_separated_plot2.png`, and `path_to_separated_plot3.png` with the actual paths to your plot images in the repository.
 
-### How to Run
 
-1. **Clone the repository**:
-   ```sh
-   git clone https://github.com/yourusername/yourrepository.git
-   ```
 
-2. **Run the R script**:
-   Open the R script file in RStudio and run the code to generate the plots.
