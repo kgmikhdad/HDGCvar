@@ -1,5 +1,4 @@
-For visualization purpose of the data, I have tried to plot each of the time series data, I could infer that the is a non stationary time series data
-
+For visualization purposes, I have plotted each of the time series data and inferred that all of them are non-stationary.
 
 ## Plot Original Data
 
@@ -14,7 +13,7 @@ data <- read.csv("C:/Users/muham/Desktop/Time series data.csv")
 # Extract the year column for the x-axis
 years <- data$year
 
-# Remove the date, year, and quarter columns for simplicity
+# Remove the date, year, and quarter columns
 data <- data[ , !names(data) %in% c("date", "year", "quarter")]
 
 # Convert data to matrix for plotting
@@ -27,6 +26,12 @@ matplot(years, data_matrix, type = "l", lty = 1, col = 1:ncol(data_matrix), xlab
 legend("topright", legend = colnames(data), col = 1:ncol(data_matrix), lty = 1, cex = 0.8)
 
 ```
+
+
+
+### Original Data Plot
+
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot01.png)
 
 ## Normalize and Plot Data
 
@@ -60,6 +65,10 @@ matplot(years, data_matrix, type = "l", lty = 1, col = 1:ncol(data_matrix), xlab
 legend("topright", legend = colnames(data), col = 1:ncol(data_matrix), lty = 1, cex = 0.8)
 
 ```
+
+### Normalized Data Plot
+
+![Normalized Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot02.png)
 
 ## Plot Separated Normalized Data
 
@@ -112,19 +121,8 @@ legend("topright", legend = colnames(rest3), col = 1:ncol(rest3), lty = 1, cex =
 
 ```
 
-## Conclusion
 
-The plots above clearly visualize the time series data, both in their original and normalized forms. Each variable is also displayed in separate graphs to avoid scaling issues and improve readability.
 
-## Example Plots
-
-### Original Data Plot
-
-![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot01.png)
-
-### Normalized Data Plot
-
-![Normalized Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot02.png)
 
 ### Separated Normalized Data Plots
 
@@ -133,6 +131,7 @@ The plots above clearly visualize the time series data, both in their original a
 
 
 
+### Granger Causality Testing and Causal Network Visualization
 
 
 
@@ -141,7 +140,7 @@ The plots above clearly visualize the time series data, both in their original a
 library(HDGCvar)
 library(igraph)
 
-# Load your data (assuming your data is saved as 'time_series_data.csv')
+# Load your data 
 data <- read.csv("C:/Users/muham/Desktop/Time series data.csv")
 
 # Set the dependent variable and the dataset
@@ -173,11 +172,6 @@ Plot_GC_all(network, Stat_type = "FS_cor", alpha = 0.01, multip_corr = list(FALS
 ```
 
 
-
-
-
-
-Here is a more visually appealing representation of the output, with clear distinctions between the different test results and selections:
 
 ---
 
@@ -377,11 +371,96 @@ Here is a more visually appealing representation of the output, with clear disti
   - PE_index l2: TRUE
 
 ---
+### Interpretation of Granger Causality Test Results
 
-Let me know if you need any additional formatting or information!
+The Granger causality tests conducted on the dataset involving the dependent variable 'PE_index' and various independent variables provide insights into the causal relationships in the data. Each test result comprises two parts: the test statistics (LM_stat) and the corresponding p-values for both Asymptotic and FS_cor versions of the tests. Additionally, the selections indicate which lags (l1, l2) of the variables were included in the final model.
+
+#### Key Points of Interpretation:
+
+1. **Test Statistics and p-values**:
+   - The LM_stat values indicate the strength of the evidence for Granger causality from the independent variable to 'PE_index'.
+   - The p-values help determine the statistical significance of these relationships. A low p-value (typically < 0.05) suggests that the independent variable Granger-causes the dependent variable.
+
+2. **Asymptotic and FS_cor**:
+   - Both tests provide similar insights, but the FS_cor version includes a small-sample correction, which can be more reliable in smaller datasets.
+   - Consistency between the Asymp and FS_cor results strengthens the validity of the findings.
+
+3. **Selections**:
+   - The selections part indicates which lags of the variables (e.g., PE_index l1, PE_index l2) were included in the model.
+   - A 'TRUE' value means that the respective lag was included in the model, indicating its importance in explaining the dependent variable's behavior.
+
+#### Detailed Interpretation:
+
+- **Test 1 (VC_index -> PE_index)**:
+  - Both the Asymp and FS_cor tests yield high p-values (0.4037 and 0.4187, respectively), indicating no significant Granger causality from VC_index to PE_index.
+  - Both lags (l1, l2) of PE_index were included in the model.
+
+- **Test 2 (Bond10 -> PE_index)**:
+  - The p-values (0.0075 and 0.0104) are below 0.05, suggesting a significant Granger causality from Bond10 to PE_index.
+  - Both lags (l1, l2) of PE_index were included in the model.
+
+- **Test 3 (SP500 -> PE_index)**:
+  - The p-values (0.2204 and 0.2439) are higher than 0.05, indicating no significant Granger causality from SP500 to PE_index.
+  - Both lags (l1, l2) of PE_index were included in the model.
+
+- **Test 4 (GSCI -> PE_index)**:
+  - The p-values (0.1259 and 0.1343) suggest no significant Granger causality from GSCI to PE_index.
+  - Both lags (l1, l2) of PE_index were included in the model.
+
+- **Test 5 (HFRI -> PE_index)**:
+  - The p-values (0.6082 and 0.6214) indicate no significant Granger causality from HFRI to PE_index.
+  - Both lags (l1, l2) of PE_index were included in the model.
+
+- **Test 6 (NFCI -> PE_index)**:
+  - The p-values (0.9085 and 0.9125) suggest no significant Granger causality from NFCI to PE_index.
+  - Both lags (l1, l2) of PE_index were included in the model.
+
+- **Test 7 (PMI -> PE_index)**:
+  - The p-values (0.7987 and 0.8069) indicate no significant Granger causality from PMI to PE_index.
+  - Both lags (l1, l2) of PE_index were included in the model.
+
+- **Test 8 (PE_r -> PE_index)**:
+  - The p-values (0.8154 and 0.8229) suggest no significant Granger causality from PE_r to PE_index.
+  - Both lags (l1, l2) of PE_index were included in the model.
+
+- **Test 9 (VC_r -> PE_index)**:
+  - The p-values (0.9066 and 0.9107) indicate no significant Granger causality from VC_r to PE_index.
+  - Both lags (l1, l2) of PE_index were included in the model.
+
+- **Test 10 (Bond10_r -> PE_index)**:
+  - The p-values (0.3451 and 0.3597) suggest no significant Granger causality from Bond10_r to PE_index.
+  - Both lags (l1, l2) of PE_index were included in the model.
+
+- **Test 11 (SP500_r -> PE_index)**:
+  - The p-values (0.9509 and 0.9531) indicate no significant Granger causality from SP500_r to PE_index.
+  - Both lags (l1, l2) of PE_index were included in the model.
+
+- **Test 12 (GSCI_r -> PE_index)**:
+  - The p-values (0.0336 and 0.0360) are below 0.05, suggesting significant Granger causality from GSCI_r to PE_index.
+  - Both lags (l1, l2) of PE_index were included in the model.
+
+- **Test 13 (HFRI_r -> PE_index)**:
+  - The p-values (0.5320 and 0.5464) suggest no significant Granger causality from HFRI_r to PE_index.
+  - Both lags (l1, l2) of PE_index were included in the model.
+
+- **Test 14 (NFCI_r -> PE_index)**:
+  - The p-values (0.9468 and 0.9492) indicate no significant Granger causality from NFCI_r to PE_index.
+  - Both lags (l1, l2) of PE_index were included in the model.
+
+- **Test 15 (PMI_r -> PE_index)**:
+  - The p-values (0.8257 and 0.8329) suggest no significant Granger causality from PMI_r to PE_index.
+  - Both lags (l1, l2) of PE_index were included in the model.
+
+### Summary:
+- **Significant Granger Causality**:
+  - Bond10 (Test 2) and GSCI_r (Test 12) show significant Granger causality to PE_index.
+
+- **No Significant Granger Causality**:
+  - The remaining independent variables do not show significant Granger causality to PE_index based on the p-values.
 
 
-"We can alter the significance level from 1% to a different level. We can manually choose the lag. I am attaching plots of different networks that I have generated based on the following changes, such as different values of alpha and different p values."
+
+"We can alter the significance level from 1% to a different level. We can manually choose the lag. I am attaching plots of different networks that I have generated based on the following changes, such as different alpha and p values."
 
 ![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot04.png)
 ![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot05.png)
@@ -476,8 +555,8 @@ Plot_GC_all(network, Stat_type = "FS_cor", alpha = 0.05, multip_corr = list(FALS
 Optimizing the Granger causality analysis involves balancing model complexity, computational efficiency, and statistical robustness. By adjusting parameters such as lag length, augmentation, bound, and alpha, you can tailor the model to better fit the characteristics of your data and research objectives. It is essential to experiment with these parameters and validate the model's performance through robust statistical testing and domain-specific knowledge.
 
 
-
-
+---
+###Example
 
 
 
@@ -556,7 +635,7 @@ Plot_GC_all(network, Stat_type = "FS_cor", alpha = 0.01, multip_corr = list(TRUE
 ![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot14.png)
 ![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot15.png)
 
-
+---
 
 
 
@@ -640,7 +719,6 @@ Plot_GC_all(network_multiple, Stat_type = "FS_cor", alpha = 0.01, multip_corr = 
 
 
 
-Here is the result printed in a well-structured way for you to copy and paste into your GitHub repository:
 
 ```r
 $tests
