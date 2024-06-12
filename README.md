@@ -93,16 +93,14 @@ The plots above provide a clear visualization of the time series data, both in t
 
 ### Original Data Plot
 
-![Original Data Plot](path_to_original_plot.png)
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot01.png)
 
 ### Normalized Data Plot
 
-![Normalized Data Plot](path_to_normalized_plot.png)
+![Normalized Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot02.png)
 
 ### Separated Normalized Data Plots
 
-![Separated Normalized Data Plot 1](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot01.png)
-![Separated Normalized Data Plot 2](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot02.png)
 ![Separated Normalized Data Plot 3](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot03.png)
 
 Replace `path_to_original_plot.png`, `path_to_normalized_plot.png`, `path_to_separated_plot1.png`, `path_to_separated_plot2.png`, and `path_to_separated_plot3.png` with the actual paths to your plot images in the repository.
