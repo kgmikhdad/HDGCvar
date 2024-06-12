@@ -176,13 +176,13 @@ Plot_GC_all(network, Stat_type = "FS_cor", alpha = 0.01, multip_corr = list(FALS
 
 "We can alter the significance level from 1% to a different level. We can manually choose the lag. I am attaching plots of different networks that I have generated based on the following changes, such as different values of alpha and different p values."
 
-https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot04.png
-https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot05.png
-https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot06.png
-https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot07.png
-https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot08.png
-https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot09.png
-https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot10.png
-https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot11.png
-https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot12.png
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot04.png)
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot05.png)
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot06.png)
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot07.png)
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot08.png)
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot09.png)
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot10.png)
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot11.png)
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot12.png)
 
