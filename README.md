@@ -174,6 +174,171 @@ Plot_GC_all(network, Stat_type = "FS_cor", alpha = 0.01, multip_corr = list(FALS
 
 
 
+[[1]]
+[[1]]$tests
+            Asymp    FS_cor
+LM_stat 1.8140219 0.8769226
+p_value 0.4037292 0.4186671
+
+[[1]]$selections
+PE_index l1 PE_index l2 
+       TRUE        TRUE 
+
+
+[[2]]
+[[2]]$tests
+            Asymp    FS_cor
+LM_stat 4.4698064 2.2072190
+p_value 0.1070025 0.1143806
+
+[[2]]$selections
+PE_index l1 PE_index l2 
+       TRUE        TRUE 
+
+
+[[3]]
+[[3]]$tests
+            Asymp    FS_cor
+LM_stat 1.0942569 0.5259783
+p_value 0.5786089 0.5923109
+
+[[3]]$selections
+PE_index l1 PE_index l2 
+       TRUE        TRUE 
+
+
+[[4]]
+[[4]]$tests
+            Asymp    FS_cor
+LM_stat 4.1442320 2.0410689
+p_value 0.1259191 0.1343019
+
+[[4]]$selections
+PE_index l1 PE_index l2 
+       TRUE        TRUE 
+
+
+[[5]]
+[[5]]$tests
+            Asymp    FS_cor
+LM_stat 0.9944839 0.4776448
+p_value 0.6082058 0.6213974
+
+[[5]]$selections
+PE_index l1 PE_index l2 
+       TRUE        TRUE 
+
+
+[[6]]
+[[6]]$tests
+            Asymp     FS_cor
+LM_stat 0.1920133 0.09164383
+p_value 0.9084580 0.91249282
+
+[[6]]$selections
+PE_index l1 PE_index l2 
+       TRUE        TRUE 
+
+
+[[7]]
+[[7]]$tests
+            Asymp    FS_cor
+LM_stat 0.4494550 0.2149482
+p_value 0.7987338 0.8068881
+
+[[7]]$selections
+PE_index l1 PE_index l2 
+       TRUE        TRUE 
+
+
+[[8]]
+[[8]]$tests
+            Asymp    FS_cor
+LM_stat 0.4082490 0.1951787
+p_value 0.8153609 0.8229440
+
+[[8]]$selections
+PE_index l1 PE_index l2 
+       TRUE        TRUE 
+
+
+[[9]]
+[[9]]$tests
+            Asymp    FS_cor
+LM_stat 0.1961634 0.0936276
+p_value 0.9065748 0.9106872
+
+[[9]]$selections
+PE_index l1 PE_index l2 
+       TRUE        TRUE 
+
+
+[[10]]
+[[10]]$tests
+            Asymp    FS_cor
+LM_stat 2.1276638 1.0311042
+p_value 0.3451308 0.3596994
+
+[[10]]$selections
+PE_index l1 PE_index l2 
+       TRUE        TRUE 
+
+
+[[11]]
+[[11]]$tests
+            Asymp     FS_cor
+LM_stat 0.1007208 0.04803757
+p_value 0.9508866 0.95311599
+
+[[11]]$selections
+PE_index l1 PE_index l2 
+       TRUE        TRUE 
+
+
+[[12]]
+[[12]]$tests
+             Asymp     FS_cor
+LM_stat 6.78940185 3.41680941
+p_value 0.03355059 0.03598886
+
+[[12]]$selections
+PE_index l1 PE_index l2 
+       TRUE        TRUE 
+
+
+[[13]]
+[[13]]$tests
+            Asymp    FS_cor
+LM_stat 1.2621274 0.6074725
+p_value 0.5320256 0.5463652
+
+[[13]]$selections
+PE_index l1 PE_index l2 
+       TRUE        TRUE 
+
+
+[[14]]
+[[14]]$tests
+            Asymp     FS_cor
+LM_stat 0.1094028 0.05218186
+p_value 0.9467678 0.94917741
+
+[[14]]$selections
+PE_index l1 PE_index l2 
+       TRUE        TRUE 
+
+
+[[15]]
+[[15]]$tests
+            Asymp    FS_cor
+LM_stat 0.3831062 0.1831221
+p_value 0.8256758 0.8328949
+
+[[15]]$selections
+PE_index l1 PE_index l2 
+       TRUE        TRUE 
+
+
 "We can alter the significance level from 1% to a different level. We can manually choose the lag. I am attaching plots of different networks that I have generated based on the following changes, such as different values of alpha and different p values."
 
 ![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot04.png)
