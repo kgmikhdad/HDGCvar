@@ -637,5 +637,303 @@ Plot_GC_all(network_multiple, Stat_type = "FS_cor", alpha = 0.01, multip_corr = 
 
 
 ```
+
+
+
+Here is the result printed in a well-structured way for you to copy and paste into your GitHub repository:
+
+```r
+$tests
+, , GCtests = VC_index -> PE_index
+
+         type
+stat          Asymp    FS_cor
+  LM_stat 1.8140219 0.8769226
+  p_value 0.4037292 0.4186671
+
+, , GCtests = Bond10 -> PE_index
+
+         type
+stat            Asymp     FS_cor
+  LM_stat 9.775980324 4.75469258
+  p_value 0.007536555 0.01037542
+
+, , GCtests = SP500 -> PE_index
+
+         type
+stat          Asymp    FS_cor
+  LM_stat 3.0249652 1.4280688
+  p_value 0.2203622 0.2438847
+
+, , GCtests = GSCI -> PE_index
+
+         type
+stat          Asymp    FS_cor
+  LM_stat 0.4192842 0.1889693
+  p_value 0.8108744 0.8280684
+
+, , GCtests = HFRI -> PE_index
+
+         type
+stat          Asymp    FS_cor
+  LM_stat 2.9549333 1.3469640
+  p_value 0.2282151 0.2641349
+
+, , GCtests = NFCI -> PE_index
+
+         type
+stat         Asymp    FS_cor
+  LM_stat 1.915335 0.8354975
+  p_value 0.383787 0.4363917
+
+, , GCtests = PMI -> PE_index
+
+         type
+stat          Asymp     FS_cor
+  LM_stat 0.2275559 0.09973301
+  p_value 0.8924561 0.90515932
+
+, , GCtests = PE_r -> PE_index
+
+         type
+stat          Asymp    FS_cor
+  LM_stat 0.6594896 0.2822525
+  p_value 0.7191072 0.7546327
+
+, , GCtests = VC_r -> PE_index
+
+         type
+stat          Asymp    FS_cor
+  LM_stat 1.0856395 0.4790302
+  p_value 0.5811074 0.6206469
+
+, , GCtests = Bond10_r -> PE_index
+
+         type
+stat          Asymp    FS_cor
+  LM_stat 3.8669217 1.7756310
+  p_value 0.1446467 0.1740286
+
+, , GCtests = SP500_r -> PE_index
+
+         type
+stat          Asymp    FS_cor
+  LM_stat 0.7098242 0.3290091
+  p_value 0.7012351 0.7202945
+
+, , GCtests = GSCI_r -> PE_index
+
+         type
+stat          Asymp    FS_cor
+  LM_stat 1.0918552 0.4774947
+  p_value 0.5793042 0.6216038
+
+, , GCtests = HFRI_r -> PE_index
+
+         type
+stat          Asymp    FS_cor
+  LM_stat 4.1981552 1.9498411
+  p_value 0.1225694 0.1469725
+
+, , GCtests = NFCI_r -> PE_index
+
+         type
+stat          Asymp    FS_cor
+  LM_stat 1.2356440 0.5117473
+  p_value 0.5391173 0.6009346
+
+, , GCtests = PMI_r -> PE_index
+
+         type
+stat          Asymp    FS_cor
+  LM_stat 2.0436456 0.8923766
+  p_value 0.3599382 0.4126256
+
+
+$selections
+$selections$`VC_index -> PE_index`
+PE_index l1   Bond10 l1    SP500 l1     GSCI l1     HFRI l1     NFCI l1      PMI l1 
+       TRUE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+    PE_r l1     VC_r l1 Bond10_r l1  SP500_r l1   GSCI_r l1   HFRI_r l1   NFCI_r l1 
+      FALSE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+   PMI_r l1 PE_index l2   Bond10 l2    SP500 l2     GSCI l2     HFRI l2     NFCI l2 
+      FALSE        TRUE       FALSE       FALSE       FALSE       FALSE       FALSE 
+     PMI l2     PE_r l2     VC_r l2 Bond10_r l2  SP500_r l2   GSCI_r l2   HFRI_r l2 
+      FALSE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+  NFCI_r l2    PMI_r l2 
+      FALSE       FALSE 
+
+$selections$`Bond10 -> PE_index`
+PE_index l1 VC_index l1    SP500 l1     GSCI l1     HFRI l1     NFCI l1      PMI l1 
+       TRUE        TRUE        TRUE        TRUE        TRUE       FALSE       FALSE 
+    PE_r l1     VC_r l1 Bond10_r l1  SP500_r l1   GSCI_r l1   HFRI_r l1   NFCI_r l1 
+      FALSE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+   PMI_r l1 PE_index l2 VC_index l2    SP500 l2     GSCI l2     HFRI l2     NFCI l2 
+      FALSE        TRUE        TRUE       FALSE        TRUE        TRUE       FALSE 
+     PMI l2     PE_r l2     VC_r l2 Bond10_r l2  SP500_r l2   GSCI_r l2   HFRI_r l2 
+      FALSE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+  NFCI_r l2    PMI_r l2 
+      FALSE       FALSE 
+
+$selections$`SP500 -> PE_index`
+PE_index l1 VC_index l1   Bond10 l1     GSCI l1     HFRI l1     NFCI l1      PMI l1 
+       TRUE        TRUE       FALSE       FALSE        TRUE       FALSE       FALSE 
+    PE_r l1     VC_r l1 Bond10_r l1  SP500_r l1   GSCI_r l1   HFRI_r l1   NFCI_r l1 
+      FALSE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+   PMI_r l1 PE_index l2 VC_index l2   Bond10 l2     GSCI l2     HFRI l2     NFCI l2 
+      FALSE        TRUE        TRUE       FALSE       FALSE        TRUE       FALSE 
+     PMI l2     PE_r l2     VC_r l2 Bond10_r l2  SP500_r l2   GSCI_r l2   HFRI_r l2 
+      FALSE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+  NFCI_r l2    PMI_r l2 
+      FALSE       FALSE 
+
+$selections$`GSCI -> PE_index`
+PE_index l1 VC_index l1   Bond10 l1    SP500 l1     HFRI l1     NFCI l1      PMI l1 
+       TRUE        TRUE        TRUE        TRUE        TRUE       FALSE       FALSE 
+    PE_r l1     VC_r l1 Bond10_r l1  SP500_r l1   GSCI_r l1   HFRI_r l1   NFCI_r l1 
+      FALSE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+   PMI_r l1 PE_index l2 VC_index l2   Bond10 l2    SP500 l2     HFRI l2     NFCI l2 
+      FALSE        TRUE        TRUE        TRUE       FALSE        TRUE       FALSE 
+     PMI l2     PE_r l2     VC_r l2 Bond10_r l2  SP500_r l2   GSCI_r l2   HFRI_r l2 
+      FALSE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+  NFCI_r l2    PMI_r l2 
+      FALSE       FALSE 
+
+$selections$`HFRI -> PE_index`
+PE_index l1 VC_index l1   Bond10 l1    SP500 l1     GSCI l1     NFCI l1      PMI l1 
+       TRUE        TRUE        TRUE        TRUE        TRUE       FALSE       FALSE 
+    PE_r l1     VC_r l1 Bond10_r l1  SP500_r l1   GSCI_r l1   HFRI_r l1   NFCI_r l1 
+      FALSE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+   PMI_r l1 PE_index l2 VC_index l2   Bond10 l2    SP500 l2     GSCI l2     NFCI l2 
+      FALSE        TRUE        TRUE        TRUE        TRUE        TRUE       FALSE 
+     PMI l2     PE_r l2     VC_r l2 Bond10_r l2  SP500_r l2   GSCI_r l2   HFRI_r l2 
+      FALSE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+  NFCI_r l2    PMI_r l2 
+      FALSE       FALSE
+
+ 
+
+$selections$`NFCI -> PE_index`
+PE_index l1 VC_index l1   Bond10 l1    SP500 l1     GSCI l1     HFRI l1      PMI l1 
+       TRUE        TRUE        TRUE        TRUE        TRUE        TRUE        TRUE 
+    PE_r l1     VC_r l1 Bond10_r l1  SP500_r l1   GSCI_r l1   HFRI_r l1   NFCI_r l1 
+      FALSE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+   PMI_r l1 PE_index l2 VC_index l2   Bond10 l2    SP500 l2     GSCI l2     HFRI l2 
+      FALSE        TRUE        TRUE        TRUE        TRUE        TRUE        TRUE 
+     PMI l2     PE_r l2     VC_r l2 Bond10_r l2  SP500_r l2   GSCI_r l2   HFRI_r l2 
+       TRUE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+  NFCI_r l2    PMI_r l2 
+      FALSE       FALSE 
+
+$selections$`PMI -> PE_index`
+PE_index l1 VC_index l1   Bond10 l1    SP500 l1     GSCI l1     HFRI l1     NFCI l1 
+       TRUE        TRUE        TRUE        TRUE       FALSE        TRUE       FALSE 
+    PE_r l1     VC_r l1 Bond10_r l1  SP500_r l1   GSCI_r l1   HFRI_r l1   NFCI_r l1 
+      FALSE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+   PMI_r l1 PE_index l2 VC_index l2   Bond10 l2    SP500 l2     GSCI l2     HFRI l2 
+      FALSE        TRUE        TRUE        TRUE        TRUE        TRUE        TRUE 
+    NFCI l2     PE_r l2     VC_r l2 Bond10_r l2  SP500_r l2   GSCI_r l2   HFRI_r l2 
+       TRUE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+  NFCI_r l2    PMI_r l2 
+      FALSE       FALSE 
+
+$selections$`PE_r -> PE_index`
+PE_index l1 VC_index l1   Bond10 l1    SP500 l1     GSCI l1     HFRI l1     NFCI l1 
+       TRUE        TRUE        TRUE        TRUE        TRUE        TRUE       FALSE 
+     PMI l1     VC_r l1 Bond10_r l1  SP500_r l1   GSCI_r l1   HFRI_r l1   NFCI_r l1 
+       TRUE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+   PMI_r l1 PE_index l2 VC_index l2   Bond10 l2    SP500 l2     GSCI l2     HFRI l2 
+      FALSE        TRUE        TRUE        TRUE        TRUE        TRUE        TRUE 
+    NFCI l2      PMI l2     VC_r l2 Bond10_r l2  SP500_r l2   GSCI_r l2   HFRI_r l2 
+      FALSE        TRUE        TRUE       FALSE       FALSE       FALSE       FALSE 
+  NFCI_r l2    PMI_r l2 
+      FALSE       FALSE 
+
+$selections$`VC_r -> PE_index`
+PE_index l1 VC_index l1   Bond10 l1    SP500 l1     GSCI l1     HFRI l1     NFCI l1 
+       TRUE        TRUE        TRUE        TRUE       FALSE        TRUE       FALSE 
+     PMI l1     PE_r l1 Bond10_r l1  SP500_r l1   GSCI_r l1   HFRI_r l1   NFCI_r l1 
+      FALSE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+   PMI_r l1 PE_index l2 VC_index l2   Bond10 l2    SP500 l2     GSCI l2     HFRI l2 
+      FALSE        TRUE        TRUE        TRUE        TRUE        TRUE        TRUE 
+    NFCI l2      PMI l2     PE_r l2 Bond10_r l2  SP500_r l2   GSCI_r l2   HFRI_r l2 
+      FALSE        TRUE       FALSE       FALSE       FALSE       FALSE       FALSE 
+  NFCI_r l2    PMI_r l2 
+      FALSE       FALSE 
+
+$selections$`Bond10_r -> PE_index`
+PE_index l1 VC_index l1   Bond10 l1    SP500 l1     GSCI l1     HFRI l1     NFCI l1 
+       TRUE        TRUE        TRUE       FALSE       FALSE        TRUE       FALSE 
+     PMI l1     PE_r l1     VC_r l1  SP500_r l1   GSCI_r l1   HFRI_r l1   NFCI_r l1 
+      FALSE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+   PMI_r l1 PE_index l2 VC_index l2   Bond10 l2    SP500 l2     GSCI l2     HFRI l2 
+      FALSE        TRUE        TRUE        TRUE        TRUE        TRUE        TRUE 
+    NFCI l2      PMI l2     PE_r l2     VC_r l2  SP500_r l2   GSCI_r l2   HFRI_r l2 
+      FALSE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+  NFCI_r l2    PMI_r l2 
+      FALSE       FALSE 
+
+$selections$`SP500_r -> PE_index`
+PE_index l1 VC_index l1   Bond10 l1    SP500 l1     GSCI l1     HFRI l1     NFCI l1 
+       TRUE       FALSE        TRUE        TRUE       FALSE       FALSE       FALSE 
+     PMI l1     PE_r l1     VC_r l1 Bond10_r l1   GSCI_r l1   HFRI_r l1   NFCI_r l1 
+      FALSE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+   PMI_r l1 PE_index l2 VC_index l2   Bond10 l2    SP500 l2     GSCI l2     HFRI l2 
+      FALSE        TRUE        TRUE       FALSE        TRUE       FALSE       FALSE 
+    NFCI l2      PMI l2     PE_r l2     VC_r l2 Bond10_r l2   GSCI_r l2   HFRI_r l2 
+      FALSE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+  NFCI_r l2    PMI_r l2 
+      FALSE       FALSE 
+
+$selections$`GSCI_r -> PE_index`
+PE_index l1 VC_index l1   Bond10 l1    SP500 l1     GSCI l1     HFRI l1     NFCI l1 
+       TRUE        TRUE        TRUE        TRUE        TRUE        TRUE       FALSE 
+     PMI l1     PE_r l1     VC_r l1 Bond10_r l1  SP500_r l1   HFRI_r l1   NFCI_r l1 
+       TRUE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+   PMI_r l1 PE_index l2 VC_index l2   Bond10 l2    SP500 l2     GSCI l2     HFRI l2 
+      FALSE        TRUE        TRUE        TRUE        TRUE        TRUE        TRUE 
+    NFCI l2      PMI l2     PE_r l2     VC_r l2 Bond10_r l2  SP500_r l2   HFRI_r l2 
+      FALSE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+  NFCI_r l2    PMI_r l2 
+      FALSE       FALSE 
+
+$selections$`HFRI_r -> PE_index`
+PE_index l1 VC_index l1   Bond10 l1    SP500 l1     GSCI l1     HFRI l1     NFCI l1 
+       TRUE        TRUE        TRUE        TRUE       FALSE        TRUE       FALSE 
+     PMI l1     PE_r l1     VC_r l1 Bond10_r l1  SP500_r l1   GSCI_r l1   NFCI_r l1 
+      FALSE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+   PMI_r l1 PE_index l2 VC_index l2   Bond10 l2    SP500 l2     GSCI l2     HFRI l2 
+      FALSE        TRUE        TRUE       FALSE       FALSE        TRUE        TRUE 
+    NFCI l2      PMI l2     PE_r l2     VC_r l2 Bond10_r l2  SP500_r l2   GSCI_r l2 
+      FALSE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+  NFCI_r l2    PMI_r l2 
+      FALSE       FALSE 
+
+$selections$`NFCI_r -> PE_index`
+PE_index l1 VC_index l1   Bond10 l1    SP500 l1     GSCI l1     HFRI l1     NFCI l1 
+       TRUE        TRUE        TRUE        TRUE        TRUE        TRUE        TRUE 
+     PMI l1     PE_r l1     VC_r l1 Bond10_r l1  SP500_r l1   GSCI_r l1   HFRI_r l1 
+       TRUE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+   PMI_r l1 PE_index l2 VC_index l2   Bond10 l2    SP500 l2     GSCI l2     HFRI l2
+
+ 
+      FALSE        TRUE        TRUE        TRUE        TRUE        TRUE        TRUE 
+    NFCI l2      PMI l2     PE_r l2     VC_r l2 Bond10_r l2  SP500_r l2   GSCI_r l2 
+       TRUE        TRUE       FALSE       FALSE       FALSE        TRUE        TRUE 
+  HFRI_r l2    PMI_r l2 
+      FALSE        TRUE 
+
+$selections$`PMI_r -> PE_index`
+PE_index l1 VC_index l1   Bond10 l1    SP500 l1     GSCI l1     HFRI l1     NFCI l1 
+       TRUE        TRUE        TRUE        TRUE        TRUE        TRUE       FALSE 
+     PMI l1     PE_r l1     VC_r l1 Bond10_r l1  SP500_r l1   GSCI_r l1   HFRI_r l1 
+       TRUE       FALSE       FALSE       FALSE       FALSE       FALSE       FALSE 
+  NFCI_r l1 PE_index l2 VC_index l2   Bond10 l2    SP500 l2     GSCI l2     HFRI l2 
+      FALSE        TRUE        TRUE        TRUE        TRUE        TRUE        TRUE 
+    NFCI l2      PMI l2     PE_r l2     VC_r l2 Bond10_r l2  SP500_r l2   GSCI_r l2 
+      FALSE        TRUE       FALSE       FALSE       FALSE       FALSE       FALSE 
+  HFRI_r l2   NFCI_r l2 
+      FALSE       FALSE
+```
 ![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot18.png)
 ![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot19.png)
