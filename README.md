@@ -174,169 +174,211 @@ Plot_GC_all(network, Stat_type = "FS_cor", alpha = 0.01, multip_corr = list(FALS
 
 
 
-[[1]]
-[[1]]$tests
-            Asymp    FS_cor
-LM_stat 1.8140219 0.8769226
-p_value 0.4037292 0.4186671
-
-[[1]]$selections
-PE_index l1 PE_index l2 
-       TRUE        TRUE 
 
 
-[[2]]
-[[2]]$tests
-            Asymp    FS_cor
-LM_stat 4.4698064 2.2072190
-p_value 0.1070025 0.1143806
 
-[[2]]$selections
-PE_index l1 PE_index l2 
-       TRUE        TRUE 
+Here is a more visually appealing representation of the output, with clear distinctions between the different test results and selections:
 
+---
 
-[[3]]
-[[3]]$tests
-            Asymp    FS_cor
-LM_stat 1.0942569 0.5259783
-p_value 0.5786089 0.5923109
+### Test Results
 
-[[3]]$selections
-PE_index l1 PE_index l2 
-       TRUE        TRUE 
+#### Test 1
+- **Asymp**: 
+  - LM_stat: 1.8140219 
+  - p_value: 0.4037292
+- **FS_cor**: 
+  - LM_stat: 0.8769226 
+  - p_value: 0.4186671
+- **Selections**: 
+  - PE_index l1: TRUE 
+  - PE_index l2: TRUE
 
+---
 
-[[4]]
-[[4]]$tests
-            Asymp    FS_cor
-LM_stat 4.1442320 2.0410689
-p_value 0.1259191 0.1343019
+#### Test 2
+- **Asymp**: 
+  - LM_stat: 4.4698064 
+  - p_value: 0.1070025
+- **FS_cor**: 
+  - LM_stat: 2.2072190 
+  - p_value: 0.1143806
+- **Selections**: 
+  - PE_index l1: TRUE 
+  - PE_index l2: TRUE
 
-[[4]]$selections
-PE_index l1 PE_index l2 
-       TRUE        TRUE 
+---
 
+#### Test 3
+- **Asymp**: 
+  - LM_stat: 1.0942569 
+  - p_value: 0.5786089
+- **FS_cor**: 
+  - LM_stat: 0.5259783 
+  - p_value: 0.5923109
+- **Selections**: 
+  - PE_index l1: TRUE 
+  - PE_index l2: TRUE
 
-[[5]]
-[[5]]$tests
-            Asymp    FS_cor
-LM_stat 0.9944839 0.4776448
-p_value 0.6082058 0.6213974
+---
 
-[[5]]$selections
-PE_index l1 PE_index l2 
-       TRUE        TRUE 
+#### Test 4
+- **Asymp**: 
+  - LM_stat: 4.1442320 
+  - p_value: 0.1259191
+- **FS_cor**: 
+  - LM_stat: 2.0410689 
+  - p_value: 0.1343019
+- **Selections**: 
+  - PE_index l1: TRUE 
+  - PE_index l2: TRUE
 
+---
 
-[[6]]
-[[6]]$tests
-            Asymp     FS_cor
-LM_stat 0.1920133 0.09164383
-p_value 0.9084580 0.91249282
+#### Test 5
+- **Asymp**: 
+  - LM_stat: 0.9944839 
+  - p_value: 0.6082058
+- **FS_cor**: 
+  - LM_stat: 0.4776448 
+  - p_value: 0.6213974
+- **Selections**: 
+  - PE_index l1: TRUE 
+  - PE_index l2: TRUE
 
-[[6]]$selections
-PE_index l1 PE_index l2 
-       TRUE        TRUE 
+---
 
+#### Test 6
+- **Asymp**: 
+  - LM_stat: 0.1920133 
+  - p_value: 0.9084580
+- **FS_cor**: 
+  - LM_stat: 0.09164383 
+  - p_value: 0.91249282
+- **Selections**: 
+  - PE_index l1: TRUE 
+  - PE_index l2: TRUE
 
-[[7]]
-[[7]]$tests
-            Asymp    FS_cor
-LM_stat 0.4494550 0.2149482
-p_value 0.7987338 0.8068881
+---
 
-[[7]]$selections
-PE_index l1 PE_index l2 
-       TRUE        TRUE 
+#### Test 7
+- **Asymp**: 
+  - LM_stat: 0.4494550 
+  - p_value: 0.7987338
+- **FS_cor**: 
+  - LM_stat: 0.2149482 
+  - p_value: 0.8068881
+- **Selections**: 
+  - PE_index l1: TRUE 
+  - PE_index l2: TRUE
 
+---
 
-[[8]]
-[[8]]$tests
-            Asymp    FS_cor
-LM_stat 0.4082490 0.1951787
-p_value 0.8153609 0.8229440
+#### Test 8
+- **Asymp**: 
+  - LM_stat: 0.4082490 
+  - p_value: 0.8153609
+- **FS_cor**: 
+  - LM_stat: 0.1951787 
+  - p_value: 0.8229440
+- **Selections**: 
+  - PE_index l1: TRUE 
+  - PE_index l2: TRUE
 
-[[8]]$selections
-PE_index l1 PE_index l2 
-       TRUE        TRUE 
+---
 
+#### Test 9
+- **Asymp**: 
+  - LM_stat: 0.1961634 
+  - p_value: 0.9065748
+- **FS_cor**: 
+  - LM_stat: 0.0936276 
+  - p_value: 0.9106872
+- **Selections**: 
+  - PE_index l1: TRUE 
+  - PE_index l2: TRUE
 
-[[9]]
-[[9]]$tests
-            Asymp    FS_cor
-LM_stat 0.1961634 0.0936276
-p_value 0.9065748 0.9106872
+---
 
-[[9]]$selections
-PE_index l1 PE_index l2 
-       TRUE        TRUE 
+#### Test 10
+- **Asymp**: 
+  - LM_stat: 2.1276638 
+  - p_value: 0.3451308
+- **FS_cor**: 
+  - LM_stat: 1.0311042 
+  - p_value: 0.3596994
+- **Selections**: 
+  - PE_index l1: TRUE 
+  - PE_index l2: TRUE
 
+---
 
-[[10]]
-[[10]]$tests
-            Asymp    FS_cor
-LM_stat 2.1276638 1.0311042
-p_value 0.3451308 0.3596994
+#### Test 11
+- **Asymp**: 
+  - LM_stat: 0.1007208 
+  - p_value: 0.9508866
+- **FS_cor**: 
+  - LM_stat: 0.04803757 
+  - p_value: 0.95311599
+- **Selections**: 
+  - PE_index l1: TRUE 
+  - PE_index l2: TRUE
 
-[[10]]$selections
-PE_index l1 PE_index l2 
-       TRUE        TRUE 
+---
 
+#### Test 12
+- **Asymp**: 
+  - LM_stat: 6.78940185 
+  - p_value: 0.03355059
+- **FS_cor**: 
+  - LM_stat: 3.41680941 
+  - p_value: 0.03598886
+- **Selections**: 
+  - PE_index l1: TRUE 
+  - PE_index l2: TRUE
 
-[[11]]
-[[11]]$tests
-            Asymp     FS_cor
-LM_stat 0.1007208 0.04803757
-p_value 0.9508866 0.95311599
+---
 
-[[11]]$selections
-PE_index l1 PE_index l2 
-       TRUE        TRUE 
+#### Test 13
+- **Asymp**: 
+  - LM_stat: 1.2621274 
+  - p_value: 0.5320256
+- **FS_cor**: 
+  - LM_stat: 0.6074725 
+  - p_value: 0.5463652
+- **Selections**: 
+  - PE_index l1: TRUE 
+  - PE_index l2: TRUE
 
+---
 
-[[12]]
-[[12]]$tests
-             Asymp     FS_cor
-LM_stat 6.78940185 3.41680941
-p_value 0.03355059 0.03598886
+#### Test 14
+- **Asymp**: 
+  - LM_stat: 0.1094028 
+  - p_value: 0.9467678
+- **FS_cor**: 
+  - LM_stat: 0.05218186 
+  - p_value: 0.94917741
+- **Selections**: 
+  - PE_index l1: TRUE 
+  - PE_index l2: TRUE
 
-[[12]]$selections
-PE_index l1 PE_index l2 
-       TRUE        TRUE 
+---
 
+#### Test 15
+- **Asymp**: 
+  - LM_stat: 0.3831062 
+  - p_value: 0.8256758
+- **FS_cor**: 
+  - LM_stat: 0.1831221 
+  - p_value: 0.8328949
+- **Selections**: 
+  - PE_index l1: TRUE 
+  - PE_index l2: TRUE
 
-[[13]]
-[[13]]$tests
-            Asymp    FS_cor
-LM_stat 1.2621274 0.6074725
-p_value 0.5320256 0.5463652
+---
 
-[[13]]$selections
-PE_index l1 PE_index l2 
-       TRUE        TRUE 
-
-
-[[14]]
-[[14]]$tests
-            Asymp     FS_cor
-LM_stat 0.1094028 0.05218186
-p_value 0.9467678 0.94917741
-
-[[14]]$selections
-PE_index l1 PE_index l2 
-       TRUE        TRUE 
-
-
-[[15]]
-[[15]]$tests
-            Asymp    FS_cor
-LM_stat 0.3831062 0.1831221
-p_value 0.8256758 0.8328949
-
-[[15]]$selections
-PE_index l1 PE_index l2 
-       TRUE        TRUE 
+Let me know if you need any additional formatting or information!
 
 
 "We can alter the significance level from 1% to a different level. We can manually choose the lag. I am attaching plots of different networks that I have generated based on the following changes, such as different values of alpha and different p values."
