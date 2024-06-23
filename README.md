@@ -1,37 +1,57 @@
-For visualization purposes, I have plotted each of the time series data and inferred that all of them are non-stationary.
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
 
-## Plot Original Data
+# Load the dataset
+data = pd.read_csv("C:/Users/muham/Desktop/Time series data.csv")
 
-```r
-# Load necessary libraries
-library(HDGCvar)
-library(igraph)
+# Convert 'date' column to datetime format
+data['date'] = pd.to_datetime(data['date'], format='%b-%y')
 
-# Load your data
-data <- read.csv("C:/Users/muham/Desktop/Time series data.csv")
+# Function to create dual y-axis plot
+def create_dual_axis_plot(df, index_col, return_col, title, filename):
+    fig, ax1 = plt.subplots(figsize=(12, 6))
 
-# Extract the year column for the x-axis
-years <- data$year
+    ax1.set_title(title)
+    ax1.set_xlabel('Date')
+    ax1.set_ylabel('Index Values', color='blue')
+    ax1.plot(df['date'], df[index_col], color='blue', label='Index')
+    ax1.tick_params(axis='y', labelcolor='blue')
 
-# Remove the date, year, and quarter columns
-data <- data[ , !names(data) %in% c("date", "year", "quarter")]
+    ax2 = ax1.twinx()
+    ax2.set_ylabel('Return Values (%)', color='red')
+    ax2.plot(df['date'], df[return_col] * 100, color='red', linestyle='--', label='Return')
+    ax2.tick_params(axis='y', labelcolor='red')
 
-# Convert data to matrix for plotting
-data_matrix <- as.matrix(data)
+    fig.tight_layout()
+    plt.legend(loc='upper left')
+    plt.savefig(filename)
+    plt.close()
 
-# Plot the time series with the year on the x-axis
-matplot(years, data_matrix, type = "l", lty = 1, col = 1:ncol(data_matrix), xlab = "Year", ylab = "Values", main = "Time Series Data")
+# List of columns to plot
+index_return_pairs = [
+    ("PE_index", "PE_r"),
+    ("VC_index", "VC_r"),
+    ("Bond10", "Bond10_r"),
+    ("SP500", "SP500_r"),
+    ("GSCI", "GSCI_r"),
+    ("HFRI", "HFRI_r"),
+    ("NFCI", "NFCI_r"),
+    ("PMI", "PMI_r")
+]
 
-# Add legend
-legend("topright", legend = colnames(data), col = 1:ncol(data_matrix), lty = 1, cex = 0.8)
-
+# Generate plots for each pair
+for pair in index_return_pairs:
+    index_col, return_col = pair
+    title = f"Time Series Plot of {index_col.replace('_', ' ')} and {return_col.replace('_', ' ')}"
+    filename = f"plot_{index_col}.png"
+    
+    create_dual_axis_plot(data, index_col, return_col, title, filename)
 ```
 
 
 
-### Original Data Plot
 
-![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot01.png)
 
 ## Normalize and Plot Data
 
