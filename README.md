@@ -42,6 +42,7 @@ The plots are titled with the format "Time Series Plot of [Index Name] and [Retu
 1. **PE_index and PE_r**:
    - Title: "Time Series Plot of PE Index and PE Return"
    - Filename: "plot_PE_index.png"
+![PE_INDEX](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/plot_PE_index.png) 
 
 2. **VC_index and VC_r**:
    - Title: "Time Series Plot of VC Index and VC Return"
