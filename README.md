@@ -131,89 +131,107 @@ for pair in index_return_pairs:
 
 ## Normalize and Plot Data
 
-```r
-# Load necessary libraries
-library(HDGCvar)
-library(igraph)
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
 
-# Load your data
-data <- read.csv("C:/Users/muham/Desktop/Time series data.csv")
+# Load the data
+file_path = '/mnt/data/Time series data.csv'
+data = pd.read_csv(file_path)
 
 # Extract the year column for the x-axis
-years <- data$year
+years = data['year']
 
 # Remove the date, year, and quarter columns
-data <- data[ , !names(data) %in% c("date", "year", "quarter")]
+data = data.drop(columns=['date', 'year', 'quarter'], errors='ignore')
 
 # Normalize the data to make it more comparable
-normalize <- function(x) {
-  return ((x - min(x)) / (max(x) - min(x)))
-}
-data_normalized <- as.data.frame(lapply(data, normalize))
+data_normalized = (data - data.min()) / (data.max() - data.min())
 
 # Convert normalized data to matrix for plotting
-data_matrix <- as.matrix(data_normalized)
+data_matrix = data_normalized.to_numpy()
 
 # Plot the normalized time series with the year on the x-axis
-matplot(years, data_matrix, type = "l", lty = 1, col = 1:ncol(data_matrix), xlab = "Year", ylab = "Normalized Values", main = "Normalized Time Series Data")
-
-# Add legend
-legend("topright", legend = colnames(data), col = 1:ncol(data_matrix), lty = 1, cex = 0.8)
-
+plt.figure(figsize=(10, 6))
+plt.plot(years, data_matrix)
+plt.xlabel('Year')
+plt.ylabel('Normalized Values')
+plt.title('Normalized Time Series Data')
+plt.legend(data.columns, loc='upper right', fontsize='small')
+plt.show()
 ```
 
 ### Normalized Data Plot
 
-![Normalized Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot02.png)
+![Normalized Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/normalised.png)
 
-## Plot Separated Normalized Data
+## Plot Individual Normalized Index Data with Growth Rate Data
 
-```r
-# Load necessary libraries
-library(HDGCvar)
-library(igraph)
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
 
-# Load your data
-data <- read.csv("C:/Users/muham/Desktop/Time series data.csv")
+# Load the data
+file_path = '/content/Time series data.csv'  # Update this path to your file location
+data = pd.read_csv(file_path)
 
 # Extract the year column for the x-axis
-years <- data$year
+years = data['year']
 
-# Remove the date, year, and quarter columns for simplicity
-data <- data[ , !names(data) %in% c("date", "year", "quarter")]
+# Remove the date, year, and quarter columns
+data = data.drop(columns=['date', 'year', 'quarter'], errors='ignore')
 
 # Normalize the data to make it more comparable
-normalize <- function(x) {
-  return ((x - min(x)) / (max(x) - min(x)))
-}
-data_normalized <- as.data.frame(lapply(data, normalize))
+data_normalized = (data - data.min()) / (data.max() - data.min())
 
-# Convert normalized data to matrix for plotting
-data_matrix <- as.matrix(data_normalized)
+# Separate data for plotting
+PE_index = data_normalized[['PE_index', 'PE_r']]
+VC_index = data_normalized[['VC_index', 'VC_r']]
+Bond10 = data_normalized[['Bond10', 'Bond10_r']]
+SP500 = data_normalized[['SP500', 'SP500_r']]
+GSCI = data_normalized[['GSCI', 'GSCI_r']]
+HFRI = data_normalized[['HFRI', 'HFRI_r']]
+NFCI = data_normalized[['NFCI', 'NFCI_r']]
+PMI = data_normalized[['PMI', 'PMI_r']]
 
-# Split the data for plotting
-PE_index <- data_matrix[, "PE_index"]
-rest1 <- data_matrix[, c("VC_index", "Bond10", "SP500", "GSCI", "HFRI")]
-rest2 <- data_matrix[, c("NFCI", "PMI", "PE_r", "VC_r", "Bond10_r")]
-rest3 <- data_matrix[, c("SP500_r", "GSCI_r", "HFRI_r", "NFCI_r", "PMI_r")]
+# Function to plot and save each pair of indices and returns in separate figures
+def plot_and_save_index_and_return(index, return_col, index_label, return_label, years, filename):
+    plt.figure(figsize=(10, 6))
+    plt.plot(years, index, label=index_label, color='blue')
+    plt.plot(years, return_col, label=return_label, color='orange')
+    plt.title(f'{index_label} and {return_label}')
+    plt.xlabel('Year')
+    plt.ylabel('Normalized Values')
+    plt.legend()
+    plt.savefig(filename)
+    plt.close()
 
-# Set up the plotting area to have 4 plots in a 2x2 grid
-par(mfrow=c(2, 2))
+# Plot and save PE_index and PE_r
+plot_and_save_index_and_return(PE_index['PE_index'], PE_index['PE_r'], 'PE_index', 'PE_r', years, 'PE_index_PE_r.png')
 
-# Plot PE_index
-plot(years, PE_index, type = "l", col = "blue", xlab = "Year", ylab = "Normalized Values", main = "PE_index")
+# Plot and save VC_index and VC_r
+plot_and_save_index_and_return(VC_index['VC_index'], VC_index['VC_r'], 'VC_index', 'VC_r', years, 'VC_index_VC_r.png')
 
-# Plot rest1
-matplot(years, rest1, type = "l", lty = 1, col = 1:ncol(rest1), xlab = "Year", ylab = "Normalized Values", main = "VC_index, Bond10, SP500, GSCI, HFRI")
-legend("topright", legend = colnames(rest1), col = 1:ncol(rest1), lty = 1, cex = 0.8)
+# Plot and save Bond10 and Bond10_r
+plot_and_save_index_and_return(Bond10['Bond10'], Bond10['Bond10_r'], 'Bond10', 'Bond10_r', years, 'Bond10_Bond10_r.png')
 
-# Plot rest2
-matplot(years, rest2, type = "l", lty = 1, col = 1:ncol(rest2), xlab = "Year", ylab = "Normalized Values", main = "NFCI, PMI, PE_r, VC_r, Bond10_r")
-legend("topright", legend = colnames(rest2), col = 1:ncol(rest2), lty = 1, cex = 0.8)
+# Plot and save SP500 and SP500_r
+plot_and_save_index_and_return(SP500['SP500'], SP500['SP500_r'], 'SP500', 'SP500_r', years, 'SP500_SP500_r.png')
 
-# Plot rest3
-matplot(years, rest3, type = "l", lty = 1, col = 1:ncol(rest3), xlab = "Year", ylab = "Normalized Values", main = "SP500_r, GSCI_r, HFRI_r, NFCI_r, PMI_r")
-legend("topright", legend = colnames(rest3), col = 1:ncol(rest3), lty = 1, cex = 0.8)
+# Plot and save GSCI and GSCI_r
+plot_and_save_index_and_return(GSCI['GSCI'], GSCI['GSCI_r'], 'GSCI', 'GSCI_r', years, 'GSCI_GSCI_r.png')
+
+# Plot and save HFRI and HFRI_r
+plot_and_save_index_and_return(HFRI['HFRI'], HFRI['HFRI_r'], 'HFRI', 'HFRI_r', years, 'HFRI_HFRI_r.png')
+
+# Plot and save NFCI and NFCI_r
+plot_and_save_index_and_return(NFCI['NFCI'], NFCI['NFCI_r'], 'NFCI', 'NFCI_r', years, 'NFCI_NFCI_r.png')
+
+# Plot and save PMI and PMI_r
+plot_and_save_index_and_return(PMI['PMI'], PMI['PMI_r'], 'PMI', 'PMI_r', years, 'PMI_PMI_r.png')
+
 
 ```
 
@@ -222,7 +240,14 @@ legend("topright", legend = colnames(rest3), col = 1:ncol(rest3), lty = 1, cex =
 
 ### Separated Normalized Data Plots
 
-![Separated Normalized Data Plot 3](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot03.png)
+![Individual_Normalized Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Bond10_Bond10_r.png)
+![Individual_Normalized Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/GSCI_GSCI_r.png)
+![Individual_Normalized Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/HFRI_HFRI_r.png)
+![Individual_Normalized Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/NFCI_NFCI_r.png)
+![Individual_Normalized Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/BPE_index_PE_r.png)
+![Individual_Normalized Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/PMI_PMI_r.png)
+![Individual_Normalized Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/SP500_SP500_r.png)
+![Individual_Normalized Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/VC_index_VC_r.png)
 
 
 
