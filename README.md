@@ -244,7 +244,7 @@ plot_and_save_index_and_return(PMI['PMI'], PMI['PMI_r'], 'PMI', 'PMI_r', years, 
 ![Individual_Normalized Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/GSCI_GSCI_r.png)
 ![Individual_Normalized Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/HFRI_HFRI_r.png)
 ![Individual_Normalized Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/NFCI_NFCI_r.png)
-![Individual_Normalized Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/BPE_index_PE_r.png)
+![Individual_Normalized Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/PE_index_PE_r.png)
 ![Individual_Normalized Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/PMI_PMI_r.png)
 ![Individual_Normalized Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/SP500_SP500_r.png)
 ![Individual_Normalized Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/VC_index_VC_r.png)
