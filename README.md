@@ -47,32 +47,32 @@ The plots are titled with the format "Time Series Plot of [Index Name] and [Retu
 2. **VC_index and VC_r**:
    - Title: "Time Series Plot of VC Index and VC Return"
    - Filename: "plot_VC_index.png"
-
+![VC_INDEX](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/plot_VC_index.png) 
 3. **Bond10 and Bond10_r**:
    - Title: "Time Series Plot of Bond10 Index and Bond10 Return"
    - Filename: "plot_Bond10.png"
-
+![Bond10](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/plot_Bond10.png) 
 4. **SP500 and SP500_r**:
    - Title: "Time Series Plot of SP500 Index and SP500 Return"
    - Filename: "plot_SP500.png"
-
+![SP_500](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/plot_SP500.png) 
 5. **GSCI and GSCI_r**:
    - Title: "Time Series Plot of GSCI Index and GSCI Return"
    - Filename: "plot_GSCI.png"
-
+![GSCI](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/plot_GSCI.png) 
 6. **HFRI and HFRI_r**:
    - Title: "Time Series Plot of HFRI Index and HFRI Return"
    - Filename: "plot_HFRI.png"
-
+![HFRI](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/plot_HFRI.png) 
 7. **NFCI and NFCI_r**:
    - Title: "Time Series Plot of NFCI Index and NFCI Return"
    - Filename: "plot_NFCI.png"
-
+![NFCI](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/plot_NFCI.png) 
 8. **PMI and PMI_r**:
    - Title: "Time Series Plot of PMI Index and PMI Return"
    - Filename: "plot_PMI.png"
-
-These plots provide a visual representation of the trends and relationships between the indices and their returns over time, facilitating analysis of their dynamics and potential causal relationships.
+![PMI](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/plot_PMI.png) 
+These plots visually represent the trends and relationships between the indices and their returns over time, facilitating analysis of their dynamics and potential causal relationships.
 
 ```python
 import pandas as pd
