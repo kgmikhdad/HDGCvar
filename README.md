@@ -1,3 +1,78 @@
+### Data Description
+
+The dataset consists of quarterly observations of various economic and financial indices and their corresponding returns, spanning from the first quarter of 1990 to the fourth quarter of 2022. The dataset includes the following columns:
+
+1. **date**: The date of the observation, in the format 'MMM-YY' (e.g., 'Mar-90').
+2. **year**: The year of the observation.
+3. **quarter**: The quarter of the observation (1, 2, 3, or 4).
+4. **PE_index**: Private Equity Index values.
+5. **PE_r**: Private Equity returns.
+6. **VC_index**: Venture Capital Index values.
+7. **VC_r**: Venture Capital returns.
+8. **Bond10**: Bond 10-year Index values.
+9. **Bond10_r**: Bond 10-year returns.
+10. **SP500**: S&P 500 Index values.
+11. **SP500_r**: S&P 500 returns.
+12. **GSCI**: Goldman Sachs Commodity Index values.
+13. **GSCI_r**: Goldman Sachs Commodity returns.
+14. **HFRI**: Hedge Fund Research Index values.
+15. **HFRI_r**: Hedge Fund Research returns.
+16. **NFCI**: National Financial Conditions Index values.
+17. **NFCI_r**: National Financial Conditions returns.
+18. **PMI**: Purchasing Managers' Index values.
+19. **PMI_r**: Purchasing Managers' Index returns.
+
+The data includes a total of 132 quarterly observations for each index and return pair. The index values represent the performance of the respective indices, while the returns represent the percentage change in the index values over the quarter.
+
+### Plot Description
+
+For each pair of index and return columns, we have generated a dual y-axis time series plot using Python and Matplotlib. Each plot includes the following features:
+
+1. **Primary y-axis on the left**: Displays the index values.
+2. **Secondary y-axis on the right**: Displays the return values (scaled to percentage).
+3. **x-axis**: Represents the date, formatted to show both the year and quarter.
+4. **Two lines**:
+   - A solid blue line representing the index values.
+   - A dashed red line representing the return values, scaled to percentage.
+
+The plots are titled with the format "Time Series Plot of [Index Name] and [Return Name]" and saved with filenames corresponding to the index, e.g., "plot_PE_index.png" for the Private Equity Index.
+
+### Summary of Plots
+
+1. **PE_index and PE_r**:
+   - Title: "Time Series Plot of PE Index and PE Return"
+   - Filename: "plot_PE_index.png"
+
+2. **VC_index and VC_r**:
+   - Title: "Time Series Plot of VC Index and VC Return"
+   - Filename: "plot_VC_index.png"
+
+3. **Bond10 and Bond10_r**:
+   - Title: "Time Series Plot of Bond10 Index and Bond10 Return"
+   - Filename: "plot_Bond10.png"
+
+4. **SP500 and SP500_r**:
+   - Title: "Time Series Plot of SP500 Index and SP500 Return"
+   - Filename: "plot_SP500.png"
+
+5. **GSCI and GSCI_r**:
+   - Title: "Time Series Plot of GSCI Index and GSCI Return"
+   - Filename: "plot_GSCI.png"
+
+6. **HFRI and HFRI_r**:
+   - Title: "Time Series Plot of HFRI Index and HFRI Return"
+   - Filename: "plot_HFRI.png"
+
+7. **NFCI and NFCI_r**:
+   - Title: "Time Series Plot of NFCI Index and NFCI Return"
+   - Filename: "plot_NFCI.png"
+
+8. **PMI and PMI_r**:
+   - Title: "Time Series Plot of PMI Index and PMI Return"
+   - Filename: "plot_PMI.png"
+
+These plots provide a visual representation of the trends and relationships between the indices and their returns over time, facilitating analysis of their dynamics and potential causal relationships.
+
 ```python
 import pandas as pd
 import matplotlib.pyplot as plt
