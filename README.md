@@ -584,23 +584,50 @@ The Granger causality tests conducted on the dataset involving the dependent var
 ![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot21.png)
 
 
+#### First Graph: General Network of Granger Causality Relationships
+
+- **Overview**:
+  The first graph depicts the network of Granger causality relationships among the variables at a 5% significance level. Each node represents a different variable from the dataset, and directed edges between nodes indicate significant Granger causality relationships.
+
+- **Key Relationships**:
+  - **GSCI**: This variable stands out as a central node with multiple connections. It has several incoming and outgoing edges, suggesting that it both influences and is influenced by other variables in the network.
+  - **SP500**: The S&P 500 index also shows multiple causal connections, indicating its importance in the financial network.
+  - **Bond10**: The 10-year bond yield is another crucial node, influencing and being influenced by several other variables.
+  - **PE_index**: The private equity index has notable connections, indicating it is both a predictor and an outcome in the network of variables.
+
+- **Interpretation**:
+  The directed edges signify that past values of the source node help predict future values of the target node. For example, an edge from `Bond10` to `PE_index` suggests that historical data on the 10-year bond yield can be used to predict future values of the private equity index. The presence of multiple connections for nodes like `GSCI`, `SP500`, and `Bond10` highlights their significant roles within the financial and economic system.
+
+#### Second Graph: Clustered Network of Granger Causality Relationships
+
+- **Overview**:
+  The second graph builds upon the first by incorporating clustering to highlight groups of variables with stronger internal causal relationships. The clusters are color-coded regions, grouping variables that exhibit significant interactions among themselves.
+
+- **Notable Clusters**:
+  - **Red Cluster (PE_index, SP500, NFCI_r)**: This cluster indicates a tight interplay of causality among these variables. It suggests that the private equity index, the S&P 500, and the returns of the National Financial Conditions Index are closely related in terms of their predictive relationships.
+  - **Green Cluster (PMI, GSCI, Bond10, PMI_r)**: This group suggests a strong internal causal connection among the Purchasing Managers' Index, the Goldman Sachs Commodity Index, the 10-year bond yield, and the returns of the Purchasing Managers' Index.
+  - **Other Clusters**: Smaller clusters such as the one containing `VC_r` or `VC_index` show isolated groups where variables have stronger internal interactions but fewer connections to the broader network.
+
+- **Interpretation**:
+  The clustering analysis provides deeper insights into the structure of the data. The red cluster, for example, suggests that movements in the S&P 500 and NFCI returns are closely linked to the private equity index, potentially indicating that these variables should be analyzed together for better predictive accuracy. The green cluster highlights the interconnectedness of various economic indicators, suggesting that they move together and influence each other significantly.
+
+### Conclusion:
+
+- **Significant Variables**:
+  - **GSCI**: A key variable with multiple causal interactions.
+  - **SP500** and **Bond10**: Important indices with several predictive relationships.
+
+- **Clusters**:
+  - **PE_index, SP500, NFCI_r**: A tightly knit group indicating strong mutual influences.
+  - **PMI, GSCI, Bond10, PMI_r**: Another closely related group, highlighting significant economic interactions.
+
+These network graphs and their interpretations provide valuable insights into the complex causal relationships within the dataset. By identifying key variables and clusters, we can better understand the dynamics of economic and financial indicators, guiding more informed decision-making and predictive modeling efforts.
 
 
 
 
 
-Other Examples
----
-![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot04.png)
-![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot05.png)
-![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot06.png)
-![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot07.png)
-![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot08.png)
-![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot09.png)
-![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot10.png)
-![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot11.png)
-![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot12.png)
-![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot13.png)
+
 
 
 ### Potential Modifications and Their Implications
@@ -763,7 +790,18 @@ Plot_GC_all(network, Stat_type = "FS_cor", alpha = 0.01, multip_corr = list(TRUE
 ```
 ![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot14.png)
 ![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot15.png)
-
+Other Examples
+---
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot04.png)
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot05.png)
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot06.png)
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot07.png)
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot08.png)
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot09.png)
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot10.png)
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot11.png)
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot12.png)
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot13.png)
 ---
 
 
