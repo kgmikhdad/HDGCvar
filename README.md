@@ -1002,12 +1002,10 @@ PE_index l1 VC_index l1   Bond10 l1    SP500 l1     GSCI l1     HFRI l1     NFCI
   HFRI_r l2   NFCI_r l2 
       FALSE       FALSE
 ```
-![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot18.png)
-![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot19.png)
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot25.png)
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot24.png)
 
 
----
----
 ---
 
 
