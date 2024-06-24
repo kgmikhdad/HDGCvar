@@ -261,7 +261,7 @@ plot_and_save_index_and_return(PMI['PMI'], PMI['PMI_r'], 'PMI', 'PMI_r', years, 
 library(HDGCvar)
 library(igraph)
 
-# Load your data 
+# Load your data (assuming your data is saved as 'time_series_data.csv')
 data <- read.csv("C:/Users/muham/Desktop/Time series data.csv")
 
 # Set the dependent variable and the dataset
@@ -279,15 +279,15 @@ interest_variables <- lapply(independent_variables, function(var) {
 
 # Test for Granger causality for each variable
 results <- lapply(interest_variables, function(pair) {
-  HDGC_VAR(GCpair = pair, data = data[, c(dependent_variable, pair$GCfrom)], p = selected_lag, d = 2, bound = 0.5 * nrow(data), parallel = TRUE)
+  HDGC_VAR(GCpair = pair, data = data[, c(dependent_variable, pair$GCfrom)], p = selected_lag, d = 2, bound = 0.5 * nrow(data), parallel = TRUE, n_cores = 3)
 })
 
 # Print results
 print(results)
 
-# Optional: Estimate the full network of causality and plot the estimated network
-network <- HDGC_VAR_all(data[, c(dependent_variable, independent_variables)], p = selected_lag, d = 2, bound = 0.5 * nrow(data), parallel = TRUE)
-Plot_GC_all(network, Stat_type = "FS_cor", alpha = 0.01, multip_corr = list(FALSE), directed = TRUE, layout = layout.circle, main = "Network", edge.arrow.size = .2, vertex.size = 5, vertex.color = c("lightblue"), vertex.frame.color = "blue", vertex.label.size = 2, vertex.label.color = "black", vertex.label.cex = 0.6, vertex.label.dist = 1, edge.curved = 0, cluster = list(TRUE, 5, "black", 0.8, 1, 0))
+# Optional: Estimate the full network of causality and plot the estimated network with multiple testing correction
+network <- HDGC_VAR_all(data[, c(dependent_variable, independent_variables)], p = selected_lag, d = 2, bound = 0.5 * nrow(data), parallel = TRUE, n_cores = 3)
+Plot_GC_all(network, Stat_type = "FS_cor", alpha = 0.05, multip_corr = list(TRUE, method = "BH"), directed = TRUE, layout = layout.circle, main = "Network", edge.arrow.size = .2, vertex.size = 5, vertex.color = c("lightblue"), vertex.frame.color = "blue", vertex.label.size = 2, vertex.label.color = "black", vertex.label.cex = 0.6, vertex.label.dist = 1, edge.curved = 0, cluster = list(TRUE, 5, "black", 0.8, 1, 0))
 
 
 ```
@@ -500,7 +500,7 @@ The Granger causality tests conducted on the dataset involving the dependent var
 
 1. **Test Statistics and p-values**:
    - The LM_stat values indicate the strength of the evidence for Granger causality from the independent variable to 'PE_index'.
-   - The p-values help determine the statistical significance of these relationships. A low p-value (typically < 0.05) suggests that the independent variable Granger-causes the dependent variable.
+   - The p-values help determine the statistical significance of these relationships. A low p-value (typically < 0.05) suggests that the independent variable Granger causes the dependent variable.
 
 2. **Asymptotic and FS_cor**:
    - Both tests provide similar insights, but the FS_cor version includes a small-sample correction, which can be more reliable in smaller datasets.
@@ -574,15 +574,20 @@ The Granger causality tests conducted on the dataset involving the dependent var
 
 ### Summary:
 - **Significant Granger Causality**:
-  - Bond10 (Test 2) and GSCI_r (Test 12) show significant Granger causality to PE_index.
+  - GSCI_r (Test 12) shows significant Granger causality to PE_index.
 
 - **No Significant Granger Causality**:
-  - The remaining independent variables do not show significant Granger causality to PE_index based on the p-values.
+  - The remaining independent variables do not show significant Granger causality to PE_index based on the p-values at a 5 percentage level.
 
-
-
-"We can alter the significance level from 1% to a different level. We can manually choose the lag. I am attaching plots of different networks that I have generated based on the following changes, such as different alpha and p values."
 ---
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot20.png)
+![Original Data Plot](https://github.com/kgmikhdad/HDGCvar/blob/kgmikhdad-files/Rplot21.png)
+
+
+
+
+
+
 
 Other Examples
 ---
